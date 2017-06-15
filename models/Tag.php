@@ -10,9 +10,9 @@ use yii\db\ActiveRecord;
  *
  * @author Dmytro Naumenko <d.naumenko.a@gmail.com>
  *
- * @property int $id
- * @property string $name
- * @property News[] $news
+ * @property int id
+ * @property string name
+ * @property News[] news
  */
 class Tag extends ActiveRecord
 {
