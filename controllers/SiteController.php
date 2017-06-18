@@ -8,6 +8,7 @@ use app\services\StatsGenerator;
 use Yii;
 use yii\base\Module;
 use yii\data\ActiveDataProvider;
+use yii\db\ActiveQuery;
 use yii\web\Controller;
 
 class SiteController extends Controller
@@ -56,7 +57,13 @@ class SiteController extends Controller
     {
         return $this->render('view', [
             'newsDataProvider' => new ActiveDataProvider([
-                'query' => News::find()->orderBy('id desc'),
+                'query' => News::find()
+                    ->with(['tags' => function ($query) {
+                        /** @var ActiveQuery $query */
+                        $query->with('news');
+                    }])
+                    // ->with('tags.news') // the same as above
+                    ->orderBy('id desc'),
                 'pagination' => [
                     'pageSize' => 100,
                 ],
