@@ -4,7 +4,6 @@ namespace app\services;
 
 use app\models\News;
 use app\models\NewsStats;
-use app\models\Tag;
 
 /**
  * Class StatsGenerator
