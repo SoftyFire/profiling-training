@@ -2,6 +2,7 @@
 
 return [
     'class' => \yii\db\Connection::class,
-    'dsn' => 'sqlite:@app/runtime/db.sqlite',
+    'dsn' => 'sqlite:@runtime/db.sqlite',
     'charset' => 'utf8',
+    'enableSchemaCache' => true,
 ];

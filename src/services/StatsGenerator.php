@@ -18,7 +18,7 @@ class StatsGenerator
     /**
      * @return NewsStats
      */
-    public function generate()
+    public function generate(): NewsStats
     {
         return new NewsStats($this->wordsCount(), $this->newsCount());
     }
@@ -28,7 +28,7 @@ class StatsGenerator
      *
      * @return array
      */
-    private function wordsCount()
+    private function wordsCount(): array
     {
         /** @var News $allNews */
         $allNews = News::find()->all();
@@ -44,16 +44,16 @@ class StatsGenerator
     /**
      * @return int news count
      */
-    private function newsCount()
+    private function newsCount(): int
     {
-        return count(News::find()->all());
+        return \count(News::find()->all());
     }
 
     /**
      * @param News $news
      * @param array $wordsCount
      */
-    private function countWordsInNews($news, &$wordsCount)
+    private function countWordsInNews($news, &$wordsCount): void
     {
         $text = preg_replace('/[^a-z0-9 ]/', ' ', mb_strtolower($news->text));
         $words = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
@@ -62,7 +62,7 @@ class StatsGenerator
             if (!isset($wordsCount[$word])) {
                 $wordsCount[$word] = 1;
             } else {
-                $wordsCount[$word] += 1;
+                $wordsCount[$word]++;
             }
         }
     }

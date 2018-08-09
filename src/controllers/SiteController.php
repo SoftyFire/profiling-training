@@ -5,7 +5,6 @@ namespace app\controllers;
 use app\models\News;
 use app\services\NewsGenerator;
 use app\services\StatsGenerator;
-use Yii;
 use yii\base\Module;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -32,7 +31,7 @@ class SiteController extends Controller
         $this->statsGenerator = $statsGenerator;
     }
 
-    public function actionIndex()
+    public function actionIndex(): string
     {
         return $this->render('index');
     }
@@ -40,9 +39,10 @@ class SiteController extends Controller
     /**
      * Displays homepage.
      *
+     * @param int $count number of news to be generated
      * @return string
      */
-    public function actionGenerateNews($count = 40)
+    public function actionGenerateNews($count = 40): string
     {
         /** @var NewsGenerator $newsGenerator */
         $this->newsGenerator->generate($count);
@@ -52,7 +52,7 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionView()
+    public function actionView(): string
     {
         return $this->render('view', [
             'newsDataProvider' => new ActiveDataProvider([
@@ -64,7 +64,7 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionStats()
+    public function actionStats(): string
     {
         $stats = $this->statsGenerator->generate();
 

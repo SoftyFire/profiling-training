@@ -50,8 +50,6 @@ $start = microtime(true);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">Generated in <?= microtime(true) - YII_BEGIN_TIME ?> seconds</p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 

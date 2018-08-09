@@ -13,6 +13,7 @@ $config = [
             'class' => yii\caching\FileCache::class,
         ],
         'log' => [
+            'class' => \yii\log\Logger::class,
             'targets' => [
                 [
                     'class' => yii\log\FileTarget::class,
