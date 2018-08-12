@@ -4,14 +4,14 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Yii Application Profiling Master-Class';
+$this->title = 'Application Profiling Master-Class';
 ?>
 <div class="site-index">
     <div class="body-content">
         <div class="row">
             <ol>
-                <li><?= Html::a('Generate news', ['site/generate-news']) ?></li>
-                <li><?= Html::a('View news', ['site/view']) ?></li>
+                <li><?= Html::a('Generate articles', ['site/generate-articles']) ?></li>
+                <li><?= Html::a('View articles', ['site/view']) ?></li>
                 <li><?= Html::a('View stats', ['site/stats']) ?></li>
             </ol>
         </div>

@@ -6,16 +6,16 @@ namespace app\models;
 use yii\db\ActiveRecord;
 
 /**
- * Class NewsTags
+ * Class ArticleTags
  *
  * @author Dmytro Naumenko <d.naumenko.a@gmail.com>
  */
-class NewsTags extends ActiveRecord
+class ArticleTags extends ActiveRecord
 {
     public function rules()
     {
         return [
-            [['news_id', 'tag_id'], 'integer'],
+            [['article_id', 'tag_id'], 'integer'],
             [['title', 'text'], 'string'],
         ];
     }
@@ -27,6 +27,6 @@ class NewsTags extends ActiveRecord
 
     public function getNews()
     {
-        return $this->hasMany(News::class, ['id' => 'news_id']);
+        return $this->hasMany(Article::class, ['id' => 'article_id']);
     }
 }

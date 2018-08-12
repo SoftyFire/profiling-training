@@ -2,24 +2,24 @@
 
 namespace app\services;
 
-use app\models\News;
-use app\models\NewsStats;
+use app\models\Article;
+use app\models\ArticlesStats;
 
 /**
  * Class StatsGenerator
  *
- * Generates [[NewsStats]] out of existing news.
+ * Generates [[ArticlesStats]] out of existing news.
  *
  * @author Dmytro Naumenko <d.naumenko.a@gmail.com>
  */
 class StatsGenerator
 {
     /**
-     * @return NewsStats
+     * @return ArticlesStats
      */
-    public function generate(): NewsStats
+    public function generate(): ArticlesStats
     {
-        return new NewsStats($this->wordsCount(), $this->newsCount());
+        return new ArticlesStats($this->wordsCount(), $this->newsCount());
     }
 
     /**
@@ -29,8 +29,8 @@ class StatsGenerator
      */
     private function wordsCount(): array
     {
-        /** @var News $allNews */
-        $allNews = News::find()->all();
+        /** @var Article $allNews */
+        $allNews = Article::find()->all();
         $wordsCount = [];
 
         foreach ($allNews as $news) {
@@ -45,11 +45,11 @@ class StatsGenerator
      */
     private function newsCount(): int
     {
-        return \count(News::find()->all());
+        return \count(Article::find()->all());
     }
 
     /**
-     * @param News $news
+     * @param Article $news
      * @param array $wordsCount
      */
     private function countWordsInNews($news, &$wordsCount): void

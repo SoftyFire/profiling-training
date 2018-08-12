@@ -2,17 +2,17 @@
 
 namespace app\services;
 
-use app\models\News;
+use app\models\Article;
 use app\models\Tag;
 
 /**
- * Class NewsGenerator
+ * Class ArticlesGenerator
  *
  * Generates random news for testing purposes.
  *
  * @author Dmytro Naumenko <d.naumenko.a@gmail.com>
  */
-class NewsGenerator
+class ArticlesGenerator
 {
     /**
      * @var \joshtronic\LoremIpsum
@@ -20,7 +20,7 @@ class NewsGenerator
     private $ipsum;
 
     /**
-     * NewsGenerator constructor.
+     * ArticlesGenerator constructor.
      *
      * @param \joshtronic\LoremIpsum $ipsum
      */
@@ -31,28 +31,31 @@ class NewsGenerator
 
     /**
      * @param int $number Number of news to be generated
-     * @void
+     * @return Article[]
      */
-    public function generate($number)
+    public function generate($number): array
     {
+        $articles = [];
         for ($i = 0; $i < $number; $i++) {
-            $this->createRandomNews();
+            $articles[] = $this->createRandomArticles();
         }
+
+        return $articles;
     }
 
     /**
-     * @return News
+     * @return Article
      */
-    private function createRandomNews()
+    private function createRandomArticles(): Article
     {
-        $news = new News([
+        $article = new Article([
             'title' => $this->generateRandomTitle(),
             'text' => $this->generateRandomText(),
         ]);
-        $news->save();
-        $this->generateTagsForNews($news);
+        $article->save();
+        $this->generateTagsForArticles($article);
 
-        return $news;
+        return $article;
     }
 
     /**
@@ -97,10 +100,10 @@ class NewsGenerator
     }
 
     /**
-     * @param News $news
+     * @param Article $news
      * @void
      */
-    private function generateTagsForNews($news)
+    private function generateTagsForArticles($news)
     {
         $count = mt_rand(1, 5);
 

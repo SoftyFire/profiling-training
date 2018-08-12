@@ -2,7 +2,7 @@
 
 /**
  * @var $this \yii\web\View
- * @var $model \app\models\News
+ * @var $model \app\models\Article
  */
 
 ?>

@@ -5,9 +5,13 @@ $db = require(__DIR__ . '/db.php');
 
 $config = [
     'id' => 'basic-console',
-    'basePath' => dirname(__DIR__),
+    'basePath' => dirname(__DIR__) . '/src',
+    'vendorPath' => dirname(__DIR__) . '/vendor',
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
+    'aliases' => [
+        '@runtime' => dirname(__DIR__) . '/runtime',
+    ],
     'components' => [
         'cache' => [
             'class' => yii\caching\FileCache::class,
@@ -25,7 +29,7 @@ $config = [
     ],
     'params' => $params,
     'controllerMap' => [
-        'migrate' => [ // Fixture generation command line.
+        'migrate' => [
             'class' => \yii\console\controllers\MigrateController::class,
             'migrationPath' => null,
             'migrationNamespaces' => [

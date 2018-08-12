@@ -13,7 +13,7 @@ class m170618_000000_db_init extends Migration
 {
     public function up()
     {
-        $this->createTable('news', [
+        $this->createTable('article', [
             'id' => $this->primaryKey(),
             'title' => $this->string(),
             'text' => $this->text(),
@@ -24,16 +24,16 @@ class m170618_000000_db_init extends Migration
             'name' => $this->string(),
         ]);
 
-        $this->createTable('news_tags', [
-            'news_id' => $this->integer(),
+        $this->createTable('article_tags', [
+            'article_id' => $this->integer(),
             'tag_id' => $this->integer(),
         ]);
     }
 
     public function down()
     {
-        $this->dropTable('news');
+        $this->dropTable('article');
         $this->dropTable('tag');
-        $this->dropTable('news_tags');
+        $this->dropTable('article_tags');
     }
 }

@@ -6,13 +6,13 @@
  * @var float $duration
  */
 
-$this->title = 'News generation';
+$this->title = 'Article generation';
 ?>
 
 <div class="site-generation-result">
     <div class="body-content">
         <div class="row">
-            Generated <?= $number ?> news.
+            Generated <?= $number ?> articles.
         </div>
     </div>
 </div>

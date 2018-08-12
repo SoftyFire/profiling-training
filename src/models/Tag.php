@@ -12,7 +12,7 @@ use yii\db\ActiveRecord;
  *
  * @property int $id
  * @property string $name
- * @property News[] $news
+ * @property Article[] $news
  */
 class Tag extends ActiveRecord
 {
@@ -26,11 +26,11 @@ class Tag extends ActiveRecord
 
     public function getNews()
     {
-        return $this->hasMany(News::class, ['id' => 'news_id'])->via('tagNews');
+        return $this->hasMany(Article::class, ['id' => 'article_id'])->via('tagNews');
     }
 
     public function getTagNews()
     {
-        return $this->hasMany(NewsTags::class, ['tag_id' => 'id']);
+        return $this->hasMany(ArticleTags::class, ['tag_id' => 'id']);
     }
 }

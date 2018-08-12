@@ -6,7 +6,7 @@ namespace app\models;
 use yii\db\ActiveRecord;
 
 /**
- * Class News
+ * Class Article
  *
  * @author Dmytro Naumenko <d.naumenko.a@gmail.com>
  *
@@ -15,7 +15,7 @@ use yii\db\ActiveRecord;
  * @property string $text
  * @property Tag[] $tags
  */
-class News extends ActiveRecord
+class Article extends ActiveRecord
 {
     public function rules()
     {
@@ -27,11 +27,11 @@ class News extends ActiveRecord
 
     public function getTags()
     {
-        return $this->hasMany(Tag::class, ['id' => 'tag_id'])->via('newsTags');
+        return $this->hasMany(Tag::class, ['id' => 'tag_id'])->via('articleTags');
     }
 
-    public function getNewsTags()
+    public function getArticleTags()
     {
-        return $this->hasMany(NewsTags::class, ['news_id' => 'id']);
+        return $this->hasMany(ArticleTags::class, ['article_id' => 'id']);
     }
 }

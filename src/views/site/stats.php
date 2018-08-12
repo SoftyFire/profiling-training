@@ -2,7 +2,7 @@
 
 /**
  * @var $this yii\web\View
- * @var \app\models\NewsStats $stats
+ * @var \app\models\ArticlesStats $stats
  */
 
 
@@ -11,7 +11,7 @@ $this->title = 'View stats';
 
 <div class="site-view-news">
     <div class="body-content">
-        Total news: <?= $stats->getCount() ?><br />
+        Total articles: <?= $stats->getCount() ?><br />
         Top words:
         <ul>
             <?php foreach ($stats->getTopWords(20) as $word => $count) : ?>

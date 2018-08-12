@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class NewsStats
+class ArticlesStats
 {
     protected $wordsCount = [];
 
